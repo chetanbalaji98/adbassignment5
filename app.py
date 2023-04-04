@@ -39,7 +39,7 @@ def index():
 def nchars():
     task1list =  []
     nval = int(request.form.get('task1'))
-    with open('C:/Users/16693/Desktop/adbassignment5/static/Grimm.txt', 'r', encoding="utf-8") as input:
+    with open('static/Grimm.txt', 'r', encoding="utf-8") as input:
         for line in input:
             allWords = nltk.tokenize.word_tokenize(line)
             for words in allWords:
