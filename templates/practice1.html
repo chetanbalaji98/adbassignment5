@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% include 'headers.html' %}
+
+
+{% block title%} People {% endblock %}
+
+{% block body %} 
+
+<hr style="height:5px;border-width:0;color:rgb(66, 66, 66);background-color:rgb(66, 66, 66)">
+
+<!--The info area -->
+<div class="container">
+    <div class="alert alert-info h5 text-center" role="alert">
+        Frequency of all the words in the string
+    </div>
+
+<!--The Table area -->
+<div class="container">
+<table class="table">
+    <tbody>
+        <table class="table table-secondary table-striped text-center table-hover">
+            <tr>
+                <th>Line</th>
+                <th>Line Number</th>
+                
+             </tr>
+        {% for item in finaldata %}
+        <tr>
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            
+        </tr>
+        {% endfor %} 
+        </table>  
+    </tbody>
+   </table>
+</div>
+{% endblock %}
