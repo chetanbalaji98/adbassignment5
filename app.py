@@ -55,7 +55,7 @@ def index():
 @app.route('/task1', methods=['GET', 'POST'])
 def get_top_nouns():
     nval = int(request.form.get('task1'))
-    with open("C://Users//16693//Desktop//adbassignment5//static//Grimm.txt", 'r', encoding="utf-8") as file:
+    with open("static/Grimm.txt", 'r', encoding="utf-8") as file:
         story = file.read()
     tokens = nltk.word_tokenize(story)
     pos_tags = nltk.pos_tag(tokens)
