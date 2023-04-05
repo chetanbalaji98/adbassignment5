@@ -103,7 +103,7 @@ def get_top_nouns():
 def get_character_stats():
 
     word  = request.form.get('task2')
-    with open("C://Users//16693//Desktop//adbassignment5//static//Grimm.txt", 'r', encoding="utf-8") as file:
+    with open("static/Grimm.txt", 'r', encoding="utf-8") as file:
         text = file.read()
     count_dict = {char: text.count(char) for char in word}
     total_chars = len(text)
@@ -119,7 +119,7 @@ def get_character_stats():
 def practice1():
     search_word=request.form.get('search')
     result = []
-    with open("C://Users//16693//Desktop//adbassignment5//static//Grimm.txt", 'r', encoding="utf-8") as f:
+    with open("static/Grimm.txt", 'r', encoding="utf-8") as f:
         for i, line in enumerate(f):
             if search_word.lower().strip() in line.lower().strip():
                 result.append((i+1, line.strip()))
