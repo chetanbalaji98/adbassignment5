@@ -64,7 +64,7 @@ def tenb():
             result = ''.join(c for c in text if c.isalpha() or c.isspace()).upper()
             count = len(result)
         results=f"N = {result}\nU = {count}"
-        return render_template('cbd10b.html',filter='10b', text=text, result=result, count=count)
+        return render_template('cbd10b.html',filter='10b', text=text, result=results, count=count)
 
 
 
