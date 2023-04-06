@@ -52,14 +52,19 @@ def cbd10a():
     return render_template('cbd10a.html', n=n, u=u, p=p, c=c, v=v, text=text,result=result)
 
 
-@app.route('/cbd10b', methods=['POST'])
-def cbd10b():
-    text = request.form['t']
-    text = ''.join(c for c in text if c.isalpha())
-    text = text.upper()
-    n = len(text)
-    result = f"{text}\n\nN = {n}"
-    return render_template('cbd10b.html', result=result)
+@app.route('/cbd10b', methods=['GET', 'POST'])
+def tenb():
+    if request.method == 'POST':
+        text = ''
+        result = ''
+        count = 0
+        if request.method == 'POST':
+            text = request.form['t']
+            # remove punctuation and numbers, change to uppercase
+            result = ''.join(c for c in text if c.isalpha() or c.isspace()).upper()
+            count = len(result)
+        results=f"N = {result}\nU = {count}"
+        return render_template('cbd10b.html',filter='10b', text=text, result=result, count=count)
 
 # @app.route('/task1', methods=['GET', 'POST'])
 # def nchars():
