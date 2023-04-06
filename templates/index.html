@@ -6,6 +6,44 @@
 
 {% block body %} 
 
+
+
+
+
+<div class="container">
+  <div class="row">
+      <div>
+          10a : Count the characters from text box
+       </div>
+          <div class="card text-center">
+              <div class="card-body">
+                <form action='/cbd10a' method="POST", method="GET">
+                  <label for="t">T:</label>
+                  <textarea id="t" name="t" rows="10" cols="50" maxlength="1400"></textarea>
+                  <br><br>
+                  <label for="s">S:</label>
+                  <textarea id="s" name="s" rows="3" cols="50" maxlength="60"></textarea>
+                  <br><br>
+                  <label for="r">R:</label>
+                  <textarea id="r" name="r" rows="10" cols="50" maxlength="1400" readonly>{{ result }}></textarea>
+                  <input class="btn btn-secondary" type="submit" id="button" value="Submit"/>
+                </form>
+                
+                
+              </div>
+          </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+	
+
+
 <hr>
 <hr>
 

@@ -37,6 +37,20 @@ cursor = conn.cursor()
 def index():
     return render_template('index.html')
 
+
+@app.route('/cbd10a', methods=['POST'])
+def cbd10a():
+    text = request.form['t']
+    n = len(text)
+    u = sum(1 for c in text if c.isupper())
+    p = sum(1 for c in text if c.isspace())
+    c = sum(1 for c in text if c in '.,:?$()-&')
+    v = sum(1 for c in text if c.isnumeric())
+    print(n)
+    print(u)
+    result = f"N = {n}\nU = {u}\nP = {p}\nC = {c}\nV = {v}"
+    return render_template('cbd10a.html', n=n, u=u, p=p, c=c, v=v, text=text,result=result)
+
 # @app.route('/task1', methods=['GET', 'POST'])
 # def nchars():
 #     task1list =  []
