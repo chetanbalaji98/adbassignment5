@@ -122,7 +122,35 @@ def cbd11b():
 
     
     
+def count_word_pairs1(text, word_pair, d):
     
+    words = text.translate(str.maketrans('', '', string.punctuation + string.digits)).split()
+    word1, word2 = word_pair.split()
+    word_count = 0
+    word_locations = []
+         # iterate over the words in the text to find adjacent pairs
+    for i in range(len(words)-1):
+        if (words[i] == word1 and words[i+d] == word2) or (words[i] == word2 and words[i+d] == word1):
+            word_count += 1
+            word_locations.append(i)
+    return word_count, word_locations
+
+@app.route('/cbd11c', methods=['GET', 'POST'])
+def cbd11c():
+    if request.method == 'POST':
+        text = request.form['S']
+        text1 = text
+        word_pair = request.form['T']
+        word_pair1 = word_pair
+        d = int(request.form['D'])
+        if len(word_pair.split()) != 2:
+            return render_template('index.html', error="Please enter only two words for the word pair")
+        text = text.upper().translate(str.maketrans('', '', string.punctuation + string.digits))
+        word_pair = word_pair.upper().translate(str.maketrans('', '', string.punctuation + string.digits))
+        word_count, word_locations = count_word_pairs1(text, word_pair, d)
+        result = f"Number of occurrences of word pair '{word_pair}' with distance {d}: {word_count}\nLocations: {word_locations}"
+        
+    return render_template('cbd11c.html', filter='11c', text1=text1, word_pair1=word_pair1,result=result)
 
 
 
