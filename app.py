@@ -51,6 +51,16 @@ def cbd10a():
     result = f"N = {n}\nU = {u}\nP = {p}\nC = {c}\nV = {v}"
     return render_template('cbd10a.html', n=n, u=u, p=p, c=c, v=v, text=text,result=result)
 
+
+@app.route('/cbd10b', methods=['POST'])
+def cbd10b():
+    text = request.form['t']
+    text = ''.join(c for c in text if c.isalpha())
+    text = text.upper()
+    n = len(text)
+    result = f"{text}\n\nN = {n}"
+    return render_template('cbd10b.html', result=result)
+
 # @app.route('/task1', methods=['GET', 'POST'])
 # def nchars():
 #     task1list =  []
