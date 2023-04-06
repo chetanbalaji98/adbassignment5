@@ -66,6 +66,42 @@ def tenb():
         results=f"N = {result}\nU = {count}"
         return render_template('cbd10b.html',filter='10b', text=text, result=result, count=count)
 
+
+
+
+
+def count_words(text, words):
+    text = ''.join(c for c in text if c.isalnum() or c.isspace())
+    word_list = words.split()
+    count = {word: text.lower().count(word.lower()) for word in word_list}
+    return count
+
+@app.route('/cbd11a', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        box_s = request.form['S']
+        box_t = request.form['T']
+        result = count_words(box_t, box_s)
+        
+        resulta=str(result)
+        results=f"N = {resulta}"
+    print(results)
+    return render_template('cbd11a.html',results=results)
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
 # @app.route('/task1', methods=['GET', 'POST'])
 # def nchars():
 #     task1list =  []
