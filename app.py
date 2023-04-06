@@ -87,6 +87,39 @@ def home():
         results=f"N = {resulta}"
     print(results)
     return render_template('cbd11a.html',results=results)
+
+
+def count_word_pairs(text, word_pair):
+    # remove punctuation and digits, and split into words
+    words = text.translate(str.maketrans('', '', string.punctuation + string.digits)).split()
+    word1, word2 = word_pair.split()
+    print(words)
+    word_count = 0
+    word_locations = []
+    # iterate over the words in the text to find adjacent pairs
+    for i in range(len(words)-1):
+        if (words[i] == word1 and words[i+1] == word2) or (words[i] == word2 and words[i+1] == word1):
+            word_count += 1
+            word_locations.append(i)
+    return word_count, word_locations
+
+@app.route('/cbd11b', methods=['GET', 'POST'])
+def cbd11b():
+    if request.method == 'POST':
+        text = request.form['S']
+        text1 = text
+        word_pair = request.form['T']
+        word_pair1 = word_pair
+        if len(word_pair.split()) != 2:
+            error_msg = 'Please enter only two words separated by a space in the second text box.'
+            return render_template('error.html', error_msg=error_msg)
+        text = text.upper().translate(str.maketrans('', '', string.punctuation + string.digits))
+        word_pair = word_pair.upper().translate(str.maketrans('', '', string.punctuation + string.digits))
+        word_count, word_locations = count_word_pairs(text, word_pair)
+        result = f"Number of occurrences of word pair '{word_pair1}': {word_count}\nLocations: {word_locations}"
+        return render_template('cbd11b.html', filter='11b', text1=text1, word_pair1=word_pair1, result=result)
+
+
     
     
     
